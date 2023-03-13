@@ -2,7 +2,7 @@ using ix.framework.core;
 
 NAMESPACE IxTaskExamples
 
-    CLASS MyCommandTask EXTENDS IxTask
+    CLASS MyCommandTask EXTENDS ix.framework.core.IxTask
         VAR PUBLIC
         {#ix-set:AttributeName = "Counter"}
         _counter : ULINT;

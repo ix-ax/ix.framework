@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ix.framework.data\ix.framework.data.csproj" />
+    <ProjectReference Include="..\..\src\ix.framework.data\_ix-ax_ix.framework.data.csproj" />
   </ItemGroup>
 
 </Project>

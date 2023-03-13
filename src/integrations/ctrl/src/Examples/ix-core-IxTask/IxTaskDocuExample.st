@@ -55,7 +55,7 @@ NAMESPACE IxTaskExamples
     END_CLASS  
 
     //<IxTaskEventLikeMethods>
-    CLASS MyTaskExample Extends IxTask
+    CLASS MyTaskExample Extends ix.framework.core.IxTask
         VAR
             OnAbortCounter : ULINT;
             OnResumeCounter : ULINT;

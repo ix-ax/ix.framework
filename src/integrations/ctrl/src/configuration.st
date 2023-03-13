@@ -15,7 +15,9 @@ CONFIGURATION MyConfiguration
         I_am_alive : ULINT;
         
         ixcore_remote_tasks : IxRemoteTaskExamples.RemoteTasks;
-
+        
+        process_data_manager: ixDataExamples.IxProcessDataManager;
+       
         // Issues
         gh_ptku_8 : Layouts.Tabbed.weather;
     END_VAR

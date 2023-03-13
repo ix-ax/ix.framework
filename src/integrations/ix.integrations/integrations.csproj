@@ -10,13 +10,9 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Ix.Abstractions" Version="0.13.4-alpha.86" />
-		<PackageReference Include="Ix.Connector" Version="0.13.4-alpha.86" />
-		<PackageReference Include="Ix.Connector.S71500.WebAPI" Version="0.13.4-alpha.86" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\..\core\src\ix.framework.core\ix.framework.core.csproj" />
+		<PackageReference Include="Ix.Abstractions" Version="0.13.4-alpha.93" />
+		<PackageReference Include="Ix.Connector" Version="0.13.4-alpha.93" />
+		<PackageReference Include="Ix.Connector.S71500.WebAPI" Version="0.13.4-alpha.93" />
 	</ItemGroup>
 
   <ItemGroup>
@@ -25,5 +21,10 @@
 
   <ItemGroup>
     <Folder Include=".g\Onliners\ix-core\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\src\ix.framework.core\_ix-ax_ix.framework.core.csproj" />
+    <ProjectReference Include="..\..\data\src\ix.framework.data\_ix-ax_ix.framework.data.csproj" />
   </ItemGroup>
 </Project>

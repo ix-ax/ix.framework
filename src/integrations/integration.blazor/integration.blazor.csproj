@@ -16,6 +16,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\core\src\ix.framework.core.blazor\ix.framework.core.blazor.csproj" />
+		<ProjectReference Include="..\..\data\src\ix.framework.data.blazor\ix.framework.data.blazor.csproj" />
+		<ProjectReference Include="..\..\data\src\repositories\Json\Ix.Framework.Data.Json.csproj" />
 		<ProjectReference Include="..\ix.integrations\integrations.csproj" />
 	</ItemGroup>
 
@@ -34,7 +36,7 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Ix.Presentation.Blazor.Controls" Version="0.13.4-alpha.86" />
+		<PackageReference Include="Ix.Presentation.Blazor.Controls" Version="0.13.4-alpha.93" />
 	</ItemGroup>
 	<!--REF_PCKG_END-->
 	<ItemGroup>

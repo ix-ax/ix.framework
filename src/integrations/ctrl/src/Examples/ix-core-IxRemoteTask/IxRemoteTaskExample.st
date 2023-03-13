@@ -2,7 +2,7 @@ using ix.framework.core;
 
 NAMESPACE IxRemoteTaskExamples
 
-    CLASS MyRemoteTask EXTENDS IxRemoteTask
+    CLASS MyRemoteTask EXTENDS ix.framework.core.IxRemoteTask
         VAR PUBLIC        
             Message : STRING[254];
             Counter : INT;

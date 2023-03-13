@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ix.framework.core\ix.framework.core.csproj" />
+    <ProjectReference Include="..\..\src\ix.framework.core\_ix-ax_ix.framework.core.csproj" />
   </ItemGroup>
 
 </Project>

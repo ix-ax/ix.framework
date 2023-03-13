@@ -4,7 +4,7 @@ NAMESPACE IxComponentExamples
 //<Implementation>
     {#ix-attr:[Container(Layout.Stack)]}
     {#ix-set:AttributeName = "IxComponent with header only example"}
-    CLASS PUBLIC IxComponentHeaderOnlyExample EXTENDS IxComponent 
+    CLASS PUBLIC IxComponentHeaderOnlyExample EXTENDS ix.framework.core.IxComponent 
         METHOD PROTECTED OVERRIDE Restore: IIxTask 
             // Some logic for Restore could be placed here. For Example:
             valueReal := REAL#1.0;

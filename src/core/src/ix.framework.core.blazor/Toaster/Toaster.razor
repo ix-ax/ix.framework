@@ -1,0 +1,103 @@
+﻿@namespace ix.framework.core.blazor.Toaster
+@if (toastService.GetToasts() != null)
+{
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 100;">
+        @foreach (Toast toast in toastService.GetToasts())
+        {
+            var bg = "";
+            var icon = "";
+            switch (toast.Type)
+            {
+                case "Info":
+                    bg = "bg-primary text-white";
+                    icon = "oi oi-info";
+                    break;
+                case "Success":
+                    bg = "bg-success text-white";
+                    icon = "oi oi-circle-check";
+                    break;
+                case "Danger":
+                    bg = "bg-danger text-white";
+                    icon = "oi oi-circle-x";
+                    break;
+                case "Warning":
+                    bg = "bg-warning text-dark";
+                    icon = "oi oi-warning";
+                    break;
+            }
+
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header @bg">
+                    <span class="@icon me-2" aria-hidden="true"></span>
+                    <strong class="me-auto">@toast.Title</strong>
+                    <small>@GetTime(toast.Posted)</small>
+                    <button type="button" class="btn-close" @onclick="() => this.ClearToast(toast)"></button>
+                </div>
+                <div class="toast-body">
+                    @toast.Message
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<hr class="border border-danger border-2">
+<h1 class="mx-5 text-danger">TOASTER</h1>
+<div class="p-5">
+    <form @onsubmit="() => AddToast()">
+        <div class="mb-3">
+            <label for="toastType" class="form-label">Type</label>
+            <select class="form-select" id="toastType" name="toastType" @bind="toastType">
+                <option value="Info">Info</option>
+                <option value="Success">Success</option>
+                <option value="Danger">Danger</option>
+                <option value="Warning">Warning</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="toastTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="toastTitle" name="toastTitle" @bind-value="toastTitle">
+        </div>
+        <div class="mb-3">
+            <label for="toastMessage" class="form-label">Message</label>
+            <input type="text" class="form-control" id="toastMessage" name="toastMessage" @bind-value="toastMessage">
+        </div>
+        <div class="mb-3">
+            <label for="toastTime" class="form-label">Time</label>
+            <input type="number" class="form-control" id="toastTime" name="toastTime" @bind-value="toastTime">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Toast</button>
+    </form>
+</div>
+
+@code {
+    [Inject]
+    private ToastService toastService { get; set; }
+
+    private string toastType { get; set; } = "Info";
+    private string toastTitle { get; set; } = "Example Title";
+    private string toastMessage { get; set; } = "Example Messsage";
+    private int toastTime { get; set; } = 30;
+
+    private void AddToast()
+    {
+        toastService.AddToast(toastType, toastTitle, toastMessage, toastTime);
+    }
+
+    private string GetTime(DateTimeOffset time)
+    {
+        var calcTime = -(time - DateTimeOffset.Now);
+        if (calcTime.Seconds < 5)
+        {
+            return "just now";
+        }
+        else if (calcTime.Seconds < 60)
+        {
+            return $"{calcTime.Seconds} secs ago";
+        }
+        else
+        {
+            return $"{calcTime.Minutes} mins ago";
+        }
+    }
+}

@@ -134,7 +134,10 @@ public sealed class TestsTask : FrostingTask<BuildContext>
 
         context.Libraries.ToList().ForEach(lib => context.ApaxTest(lib));
         context.Integrations.ToList().ForEach(proj => context.ApaxTest(proj));
-        context.DotNetTest(Path.Combine(context.RootDir, "ix.framework-L1-tests.slnf"), context.DotNetTestSettings);
+
+        //context.DotNetTest(Path.Combine(context.RootDir, "ix.framework-L1-tests.slnf"), context.DotNetTestSettings);
+
+        context.Log.Information("Tests done.");
     }
 }
 

@@ -1,0 +1,51 @@
+﻿@namespace ix.framework.data
+@using CommunityToolkit.Mvvm.ComponentModel;
+@using ix.framework.core.Interfaces;
+@using ix.framework.core.ViewModels;
+
+<h3>IxDataView</h3>
+
+@if (Vm == null)
+{
+    <h5>Loading...</h5>
+}
+else
+{
+
+    @*<p>@Vm.myProperty</p>
+
+<button class="btn-primary" @onclick="() => Vm.ChangePropCommand.Execute(true)" >Chnage prop</button>
+    <button class="btn-primary" @onclick="() => Vm.ChangeProp()">Chnage prop</button>
+*@
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">First</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Vm.ObservableRecords)
+            {
+                <tr>
+                    <td>@item.DataEntityId</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" @onclick="() => Vm.CreateNew()">Create new item</button>
+
+}
+@code {
+
+    [Parameter]
+    public IDataViewModel Vm { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+}

@@ -1,5 +1,7 @@
-﻿using Ix.Connector;
+﻿using System;
+using Ix.Connector;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace ix.framework.core
 {

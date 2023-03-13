@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "ix.ixc": {
-      "version": "0.13.4-alpha.86",
+      "version": "0.13.4-alpha.93",
       "commands": [
         "ixc"
       ]
@@ -15,7 +15,7 @@
       ]
     },
     "ix.ixd": {
-      "version": "0.13.4-alpha.86",
+      "version": "0.13.4-alpha.93",
       "commands": [
         "ixd"
       ]

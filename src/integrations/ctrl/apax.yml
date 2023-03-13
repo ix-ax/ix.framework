@@ -1,5 +1,5 @@
 name: "integrations"
-version          : '0.1.4-40--NEW-FEATURE-ix-core-add-implementation-of-remote-task.43'
+version                   : '0.1.4-44--NEW-FEATURE-ix-data-Implement-IxDataExchange-based-on-TcoDataExchange.54'
 type: app
 targets:
   - "1500"
@@ -7,8 +7,8 @@ targets:
   - axunit-llvm
   - axunit
 dependencies:
-  "@ix-ax/ix.framework.core"           : '0.1.4-40--NEW-FEATURE-ix-core-add-implementation-of-remote-task.43'
-  "@ix-ax/ix.framework.data"           : '0.1.4-40--NEW-FEATURE-ix-core-add-implementation-of-remote-task.43'
+  "@ix-ax/ix.framework.core"                    : '0.1.4-44--NEW-FEATURE-ix-data-Implement-IxDataExchange-based-on-TcoDataExchange.54'
+  "@ix-ax/ix.framework.data"                    : '0.1.4-44--NEW-FEATURE-ix-data-Implement-IxDataExchange-based-on-TcoDataExchange.54'
   "@ax/sdk": ^3.0.11
 variables:
   APAX_BUILD_ARGS: [ -d ]

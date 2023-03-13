@@ -1,5 +1,5 @@
 name: "@ix-ax/ix.framework.core"
-version      : '0.1.4-40--NEW-FEATURE-ix-core-add-implementation-of-remote-task.43'
+version               : '0.1.4-44--NEW-FEATURE-ix-data-Implement-IxDataExchange-based-on-TcoDataExchange.54'
 type: lib
 targets:
   - "1500"

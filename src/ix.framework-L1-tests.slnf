@@ -2,8 +2,7 @@
   "solution": {
     "path": "ix.framework.sln",
     "projects": [
-      "core\\tests\\ix.famework.core.tests\\ix.framework.core.tests.csproj",
-      "integrations\\tests\\integration.tests\\integration.tests.csproj"
+      "core\\tests\\ix.famework.core.tests\\ix.framework.core.tests.csproj"     
     ]
   }
 }

@@ -25,8 +25,13 @@ NAMESPACE ix.framework.core
     /// Provides base class for all classes of `ix.framework`.
     ///</summary>
     CLASS PUBLIC IxObject IMPLEMENTS IIxObject
-        VAR PRIVATE
-            _identity   : ULINT := ULINT#0;
+        VAR PUBLIC
+            {#ix-attr:[CompilerOmits("POCO")]}
+            {#ix-attr:[ReadOnly()]}
+            Identity   : ULINT := ULINT#0;
+        END_VAR    
+
+        VAR PRIVATE           
             _parent     : IIxObject;
             _context    : IIxContext;
         END_VAR  
@@ -39,7 +44,7 @@ NAMESPACE ix.framework.core
         /// Gets unique identity of this object in given context.
         ///</summary>
         METHOD PUBLIC GetIdentity : ULINT 
-            GetIdentity := _identity;
+            GetIdentity := Identity;
         END_METHOD
             
         ///<summary>
@@ -63,9 +68,9 @@ NAMESPACE ix.framework.core
                 parent : IIxObject;
             END_VAR   
 
-            IF(_identity = ULINT#0 AND parent <> NULL) THEN
+            IF(Identity = ULINT#0 AND parent <> NULL) THEN
                 _context    := parent.GetContext();  
-                _identity   := _context.CreateIdentity(); 
+                Identity   := _context.CreateIdentity(); 
                 _parent     := parent;
                 RETURN;                 
             END_IF;
@@ -82,9 +87,9 @@ NAMESPACE ix.framework.core
                 context : IIxContext;
             END_VAR   
 
-            IF(_identity = ULINT#0 AND context <> NULL) THEN
+            IF(Identity = ULINT#0 AND context <> NULL) THEN
                 _context    := context;  
-                _identity   := _context.CreateIdentity();                 
+                Identity   := _context.CreateIdentity();                 
             END_IF;
 
         END_METHOD 

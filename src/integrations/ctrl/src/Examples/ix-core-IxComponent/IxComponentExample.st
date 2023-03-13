@@ -4,7 +4,7 @@ NAMESPACE IxComponentExamples
     //<Implementation>
     {#ix-attr:[Container(Layout.Stack)]}
     {#ix-set:AttributeName = "IxComponent example name"}
-    CLASS PUBLIC IxComponentExample EXTENDS IxComponent 
+    CLASS PUBLIC IxComponentExample EXTENDS ix.framework.core.IxComponent  
         METHOD PROTECTED OVERRIDE Restore: IIxTask 
             ;
         END_METHOD

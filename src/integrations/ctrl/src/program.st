@@ -7,6 +7,7 @@ PROGRAM MyProgram
         myComponentExample : IxComponentExamples.ComponentExampleContext;
         myComponentHeaderOnlyExample : IxComponentExamples.ComponentHeaderOnlyExampleContext;
         ixcore_remote_tasks : IxRemoteTaskExamples.RemoteTasks;
+        
     END_VAR    
     I_am_alive := I_am_alive + ULINT#1;
     MainContext.Run();
@@ -14,98 +15,46 @@ PROGRAM MyProgram
     ixcoreSequencers.Run();
     myComponentExample.Run();
     myComponentHeaderOnlyExample.Run();
-    ixcore_remote_tasks.Run();
-
+    ixcore_remote_tasks.Run();   
 END_PROGRAM
 
-USING ix.framework.core;
 
-CLASS PUBLIC Cylinder EXTENDS ix.framework.core.IxObject
-    VAR PUBLIC
-        _home : REF_TO BOOL;
-        _work : REF_TO BOOL;
-
-        _moveHome : REF_TO BOOL;
-        _moveWork : REF_TO BOOL;
-    END_VAR 
-
-    VAR PUBLIC
-        {#ix-set:AttributeName = "Move Home"}
-        _moveHomeCommand : IxTask;
-        {#ix-set:AttributeName = "Move Work"}
-        _moveWorkCommand : IxTask;
-    END_VAR    
-    
-    METHOD PUBLIC MoveHome : IIxTaskState       
-        MoveHome :=_moveHomeCommand.Invoke();
-    END_METHOD    
-
-    METHOD PUBLIC MoveWork : IIxTaskState       
-        MoveWork :=_moveWorkCommand.Invoke();
-    END_METHOD    
-
-    METHOD PUBLIC Initialize        
-        VAR_INPUT
-            parent : IIxContext;
-            home : REF_TO BOOL;
-            work : REF_TO BOOL;
-            moveHome : REF_TO BOOL;
-            moveWork : REF_TO BOOL;
-        END_VAR    
-        
-        SUPER.Initialize(parent);
-        _moveHomeCommand.Initialize(THIS);
-
-        _home := home;
-        _work := work;
-        _moveHome := moveHome;
-        _moveWork := moveWork;
-
-        IF(_moveHomeCommand.Execute()) THEN
-            _moveHome^ := TRUE;
-            _moveWork^ := FALSE;
-            _moveHomeCommand.DoneWhen(_home^);    
-        END_IF;    
-        
-        IF(_moveWorkCommand.Execute()) THEN
-            _moveHome^ := FALSE;
-            _moveWork^ := TRUE;
-            _moveWorkCommand.DoneWhen(_work^);    
-        END_IF;    
-
-    END_METHOD        
-END_CLASS    
-
-
-CLASS MyContext EXTENDS ix.framework.core.IxContext
-    VAR PUBLIC 
-        _counter : INT; 
-        _cylinder1 : Cylinder;   
-        _homeSensor : BOOL;
-        _workSensor : BOOL;
-        _moveHomeSignal : BOOL;
-        _moveWorkSignal : BOOL;
-    END_VAR    
-    
-    VAR PUBLIC 
-        _progress : INT; 
+CLASS MyContext EXTENDS ix.framework.core.IxContext    
+    VAR PUBLIC         
+        process_data_manager_remote_exec: ixDataExamples.IxProcessDataManager;
     END_VAR
 
-    METHOD PROTECTED OVERRIDE Main 
-        _cylinder1.Initialize(THIS, REF(_homeSensor), REF(_workSensor), REF(_moveHomeSignal), REF(_moveWorkSignal));
+    METHOD PROTECTED OVERRIDE Main        
+        THIS.DataExchangeTests();
+    END_METHOD
 
-        CASE _progress OF
-            0:
-                IF(_cylinder1.MoveWork().IsDone()) THEN 
-                    _progress := 1; 
-                END_IF;
-            1:    
-                IF(_cylinder1.MoveHome().IsDone()) THEN 
-                    _progress := 2; 
-                END_IF;            
-        END_CASE;
+    METHOD DataExchangeTests : Int       
+        process_data_manager_remote_exec.Initialize(THIS);
+        process_data_manager_remote_exec.Run();   
+        
+        IF(process_data_manager_remote_exec._create) THEN
+            IF(process_data_manager_remote_exec.Create(process_data_manager_remote_exec._identifier).IsDone()) THEN
+                process_data_manager_remote_exec._create := FALSE;
+            END_IF;    
+        END_IF;   
+        
+        IF(process_data_manager_remote_exec._read) THEN
+            IF(process_data_manager_remote_exec.Read(process_data_manager_remote_exec._identifier).IsDone()) THEN
+                process_data_manager_remote_exec._read := FALSE;
+            END_IF;    
+        END_IF;  
 
-        _counter := _counter + 1;
+        IF(process_data_manager_remote_exec._update) THEN
+            IF(process_data_manager_remote_exec.Update(process_data_manager_remote_exec._identifier).IsDone()) THEN
+                process_data_manager_remote_exec._update := FALSE;
+            END_IF;    
+        END_IF;  
+
+        IF(process_data_manager_remote_exec._delete) THEN
+            IF(process_data_manager_remote_exec.Delete(process_data_manager_remote_exec._identifier).IsDone()) THEN
+                process_data_manager_remote_exec._delete := FALSE;
+            END_IF;    
+        END_IF; 
     END_METHOD
 END_CLASS    
 

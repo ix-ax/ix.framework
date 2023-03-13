@@ -2,10 +2,15 @@
   "solution": {
     "path": "ix.framework.sln",
     "projects": [
+      "base\\src\\Ix.Base.Abstractions\\Ix.Base.Abstractions.csproj",
       "core\\src\\ix.framework.core.blazor\\ix.framework.core.blazor.csproj",
-      "core\\src\\ix.framework.core\\ix.framework.core.csproj",
+      "core\\src\\ix.framework.core\\_ix-ax_ix.framework.core.csproj",
       "data\\src\\ix.framework.data.blazor\\ix.framework.data.blazor.csproj",
-      "data\\src\\ix.framework.data\\ix.framework.data.csproj"
+      "data\\src\\ix.framework.data\\_ix-ax_ix.framework.data.csproj",
+      "data\\src\\repositories\\InMemory\\Ix.Framework.Data.InMemory.csproj",
+      "data\\src\\repositories\\Json\\Ix.Framework.Data.Json.csproj",
+      "data\\src\\repositories\\MongoDb\\Ix.Framework.Data.MongoDb.csproj",
+      "data\\src\\repositories\\RavenDb\\TcOpen.Inxton.RavenDb\\Ix.Framework.Data.RavenDb.csproj"
     ]
   }
 }
